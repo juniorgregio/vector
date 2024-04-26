@@ -1,8 +1,6 @@
 api:
   enabled: true
   address: 0.0.0.0:9001
-log:
-  level: "debug"
 
 sources:
   docker_host:
