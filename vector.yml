@@ -17,7 +17,7 @@ transforms:
       .project = "default"
       .event_message = del(.message)
       .appname = del(.container_name)
-      log("Info", "App name:", + .appname)
+      log("Info", "App name:" + .appname)
       del(.container_created_at)
       del(.container_id)
       del(.source_type)
