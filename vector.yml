@@ -15,10 +15,12 @@ transforms:
       - docker_host
     source: |-
       .project = "default"
-      log(.message, level: "info")  # Assumindo que você deseja logar o campo message no nível info
       .event_message = del(.message)
-      if is_defined(.container_name) {
+      if .container_name.exists {
+        log("Info", "App name exists: " + .container_name)
         .appname = .container_name
+      } else {
+        log("Error", "App name does not exist")
       }
       del(.container_name)
       del(.container_created_at)
