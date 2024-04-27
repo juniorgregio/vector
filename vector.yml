@@ -15,9 +15,12 @@ transforms:
       - docker_host
     source: |-
       .project = "default"
+      log(.message, level: "info")  # Assumindo que você deseja logar o campo message no nível info
       .event_message = del(.message)
-      .appname = del(.container_name)
-      log("Info", "App name:" + .appname)
+      if is_defined(.container_name) {
+        .appname = .container_name
+      }
+      del(.container_name)
       del(.container_created_at)
       del(.container_id)
       del(.source_type)
