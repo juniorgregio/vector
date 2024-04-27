@@ -16,13 +16,7 @@ transforms:
     source: |-
       .project = "default"
       .event_message = del(.message)
-      if .container_name.exists {
-        log("Info", "App name exists: " + .container_name)
-        .appname = .container_name
-      } else {
-        log("Error", "App name does not exist")
-      }
-      del(.container_name)
+      .appname = del(.container_name)
       del(.container_created_at)
       del(.container_id)
       del(.source_type)
